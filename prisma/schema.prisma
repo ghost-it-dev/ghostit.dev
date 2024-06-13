@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id          String       @id @default(cuid())
+  name        String
+  title       String?
+  connections Connection[]
+}
+
+model Connection {
+  id       String @id @default(cuid())
+  name     String
+  url      String
+  logo     String
+  personId String
+  person   Person @relation(fields: [personId], references: [id])
+}
+
+model Skill {
+  id   String @id @default(cuid())
+  text String
+  logo String
+}
+
+model Education {
+  id     String @id @default(cuid())
+  title  String
+  school String
+  start  String
+  end    String
+}
+
+model Experience {
+  id          String @id @default(cuid())
+  title       String
+  description String
+  company     String
+  start       String
+  end         String
+}
