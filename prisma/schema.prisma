@@ -22,7 +22,6 @@ model Person {
 
 model Connection {
   id       String  @id @default(cuid())
-  name     String
   url      String
   logo     String?
   personId String

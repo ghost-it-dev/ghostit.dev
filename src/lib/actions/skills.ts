@@ -2,7 +2,7 @@
 
 import { Skill } from "@prisma/client";
 import prisma from "../prisma";
-import type { AddSkill } from "../../schemas/skills";
+import type { AddSkill } from "./schemas/skills";
 import { getPerson } from "./person";
 
 async function getSkills(): Promise<Skill[] | null> {
