@@ -62,22 +62,22 @@ export default async function Page() {
               </Button>
             </div>
             <div className="mt-4 space-y-4">
-              <div className="w-full flex items-center justify-between">
+              <div className="w-full flex items-center justify-between group">
                 <div>
                   <h3 className="font-semibold">Bachelor of Science in Computer Science</h3>
                   <p className="text-gray-500">University of Example, 2016 - 2020</p>
                 </div>
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
                   <PencilIcon className="h-4 w-4" />
                   <TrashIcon className="h-4 w-4" />
                 </div>
               </div>
-              <div className="w-full flex items-center justify-between">
+              <div className="w-full flex items-center justify-between group">
                 <div>
                   <h3 className="font-semibold">Bachelor of Science in Computer Science</h3>
                   <p className="text-gray-500">University of Example, 2016 - 2020</p>
                 </div>
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
                   <PencilIcon className="h-4 w-4" />
                   <TrashIcon className="h-4 w-4" />
                 </div>
@@ -144,13 +144,13 @@ export default async function Page() {
               </Button>
             </div>
             <div className="mt-4 space-y-4">
-              <div>
+              <div className="group">
                 <div className="w-full flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold">Software Engineer</h3>
                     <p className="text-sm text-gray-500">Example Company, 2020 - Present</p>
                   </div>
-                  <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
                     <PencilIcon className="h-4 w-4" />
                     <TrashIcon className="h-4 w-4" />
                   </div>
@@ -160,13 +160,13 @@ export default async function Page() {
                   cross-functional teams to deliver high-quality software.
                 </p>
               </div>
-              <div>
+              <div className="group">
                 <div className="w-full flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold">Software Engineer</h3>
                     <p className="text-sm text-gray-500">Example Company, 2020 - Present</p>
                   </div>
-                  <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
                     <PencilIcon className="h-4 w-4" />
                     <TrashIcon className="h-4 w-4" />
                   </div>
