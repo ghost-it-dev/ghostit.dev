@@ -1,8 +1,6 @@
 import { PhoneIcon, MailIcon, LinkedinIcon, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import getDetails from "@/lib/actions/person";
-import { redirect } from "next/navigation";
 
 export default async function Home() {
   // const details = await getDetails();

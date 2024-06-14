@@ -11,7 +11,6 @@ model Person {
   id          String       @id @default(cuid())
   name        String
   title       String?
-  connections Connection[]
 }
 
 model Connection {
@@ -20,7 +19,6 @@ model Connection {
   url      String
   logo     String
   personId String
-  person   Person @relation(fields: [personId], references: [id])
 }
 
 model Skill {
