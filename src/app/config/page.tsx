@@ -68,8 +68,8 @@ export default async function Page() {
                   <p className="text-gray-500">University of Example, 2016 - 2020</p>
                 </div>
                 <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
-                  <PencilIcon className="h-4 w-4" />
-                  <TrashIcon className="h-4 w-4" />
+                  <PencilIcon className="h-4 w-4 cursor-pointer" />
+                  <TrashIcon className="h-4 w-4 cursor-pointer" />
                 </div>
               </div>
               <div className="w-full flex items-center justify-between group">
@@ -78,8 +78,8 @@ export default async function Page() {
                   <p className="text-gray-500">University of Example, 2016 - 2020</p>
                 </div>
                 <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
-                  <PencilIcon className="h-4 w-4" />
-                  <TrashIcon className="h-4 w-4" />
+                  <PencilIcon className="h-4 w-4 cursor-pointer" />
+                  <TrashIcon className="h-4 w-4 cursor-pointer" />
                 </div>
               </div>
             </div>
@@ -151,8 +151,8 @@ export default async function Page() {
                     <p className="text-sm text-gray-500">Example Company, 2020 - Present</p>
                   </div>
                   <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
-                    <PencilIcon className="h-4 w-4" />
-                    <TrashIcon className="h-4 w-4" />
+                    <PencilIcon className="h-4 w-4 cursor-pointer" />
+                    <TrashIcon className="h-4 w-4 cursor-pointer" />
                   </div>
                 </div>
                 <p className="text-gray-500 mt-2">
@@ -167,8 +167,8 @@ export default async function Page() {
                     <p className="text-sm text-gray-500">Example Company, 2020 - Present</p>
                   </div>
                   <div className="flex gap-2 items-center opacity-0 group-hover:opacity-100 duration-200">
-                    <PencilIcon className="h-4 w-4" />
-                    <TrashIcon className="h-4 w-4" />
+                    <PencilIcon className="h-4 w-4 cursor-pointer" />
+                    <TrashIcon className="h-4 w-4 cursor-pointer" />
                   </div>
                 </div>
                 <p className="text-gray-500 mt-2">

@@ -1,11 +1,11 @@
 import { PhoneIcon, MailIcon, LinkedinIcon, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getPerson } from "@/lib/actions/person";
 
 export default async function Page() {
-  // const details = await getDetails();
+  const person = await getPerson();
 
-  // if (!details) redirect("/config")
   return (
     <main className="w-full max-w-4xl mx-auto py-12 md:py-16 px-4 md:px-6">
       {/* <div className="w-full gap-4 flex items-center justify-end">
@@ -23,8 +23,8 @@ export default async function Page() {
               className="w-full h-full object-cover"
             />
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold mt-4">John Doe</h1>
-          <p className="text-gray-500 mt-2">Software Engineer</p>
+          <h1 className="text-2xl md:text-3xl font-bold mt-4">{person.name}</h1>
+          {person.title && <p className="text-gray-500 mt-2">{person.title}</p>}
           <div className="mt-4 space-y-2 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <PhoneIcon className="inline-block h-4 w-4" />
