@@ -11,35 +11,49 @@ model Person {
   id          String       @id @default(cuid())
   name        String
   title       String?
+  email       String?
+  phone       String?
+  profilePic  String?
+  connections Connection[]
+  skills      Skill[]
+  education   Education[]
+  experience  Experience[]
 }
 
 model Connection {
-  id       String @id @default(cuid())
+  id       String  @id @default(cuid())
   name     String
   url      String
-  logo     String
+  logo     String?
   personId String
+  person   Person  @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Skill {
-  id   String @id @default(cuid())
-  text String
-  logo String
+  id       String  @id @default(cuid())
+  text     String
+  logo     String?
+  personId String
+  person   Person  @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Education {
-  id     String @id @default(cuid())
-  title  String
-  school String
-  start  String
-  end    String
+  id       String    @id @default(cuid())
+  title    String
+  school   String
+  start    DateTime
+  end      DateTime?
+  personId String
+  person   Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Experience {
-  id          String @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
-  description String
   company     String
-  start       String
-  end         String
+  description String?
+  start       DateTime
+  end         DateTime?
+  personId    String
+  person      Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
