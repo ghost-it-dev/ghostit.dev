@@ -1,6 +1,6 @@
 import {
 	SiAngular, SiCplusplus, SiCsharp, SiCss3, SiDotnet, SiFacebook, SiGit, SiGithub,
-	SiHtml5, SiInstagram, SiJavascript, SiLinkedin, SiMysql, SiNextdotjs, SiPython,
+	SiHtml5, SiInstagram, SiJavascript, SiLinkedin, SiMongodb, SiMysql, SiNextdotjs, SiPython,
 	SiReact, SiRust, SiSvelte, SiTypescript, SiVite, SiVuedotjs, SiX
 } from '@icons-pack/react-simple-icons';
 
@@ -29,6 +29,7 @@ const skillsData: SkillsMap = {
 	next: { icon: SiNextdotjs, friendlyName: 'Next.js' },
 	typescript: { icon: SiTypescript, friendlyName: 'TypeScript' },
 	javascript: { icon: SiJavascript, friendlyName: 'JavaScript' },
+	mongodb: { icon: SiMongodb, friendlyName: 'MongoDB' },
 	html: { icon: SiHtml5, friendlyName: 'HTML' },
 	css: { icon: SiCss3, friendlyName: 'CSS' },
 	rust: { icon: SiRust, friendlyName: 'Rust' },

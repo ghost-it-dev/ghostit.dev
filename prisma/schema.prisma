@@ -14,26 +14,26 @@ model Person {
   email       String?
   phone       String?
   profilePic  String?
-  connections Connection[]
-  skills      Skill[]
-  education   Education[]
-  experience  Experience[]
+  connections Connection[] @relation("PersonConnections")
+  skills      Skill[]      @relation("PersonSkills")
+  education   Education[]  @relation("PersonEducation")
+  experience  Experience[] @relation("PersonExperience")
 }
 
 model Connection {
   id       String  @id @default(cuid())
   url      String
-  logo     String?
+  handle   String
+  logo     String
+  person   Person  @relation("PersonConnections", fields: [personId], references: [id], onDelete: Cascade)
   personId String
-  person   Person  @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Skill {
   id       String  @id @default(cuid())
-  text     String
-  logo     String?
+  name     String
+  person   Person  @relation("PersonSkills", fields: [personId], references: [id], onDelete: Cascade)
   personId String
-  person   Person  @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Education {
@@ -42,8 +42,8 @@ model Education {
   school   String
   start    DateTime
   end      DateTime?
+  person   Person    @relation("PersonEducation", fields: [personId], references: [id], onDelete: Cascade)
   personId String
-  person   Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Experience {
@@ -53,6 +53,6 @@ model Experience {
   description String?
   start       DateTime
   end         DateTime?
+  person      Person    @relation("PersonExperience", fields: [personId], references: [id], onDelete: Cascade)
   personId    String
-  person      Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
 }

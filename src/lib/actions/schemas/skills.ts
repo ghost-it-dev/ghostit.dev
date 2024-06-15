@@ -1,8 +1,7 @@
 import { z } from "zod";
 
 export const AddSkillSchema = z.object({
-	text: z.string(),
-	logo: z.string().optional(),
+	name: z.string().min(1),
 });
 
 export type AddSkill = z.infer<typeof AddSkillSchema>

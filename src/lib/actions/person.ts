@@ -1,7 +1,6 @@
 "use server";
 import { Person, Connection, Skill, Education, Experience } from "@prisma/client";
 import prisma from "../prisma";
-import fs from "node:fs/promises";
 
 type PersonWithRelations = Person & {
 	connections: Connection[];
@@ -30,9 +29,21 @@ async function getPerson(): Promise<PersonWithRelations> {
 			data: {
 				name: "John Doe",
 				phone: "(123) 456-7890",
+				email: "test@test.com",
 				profilePic: "trunk.png",
 			},
 			include: includeRelations
+		});
+
+		await prisma.skill.createMany({
+			data: [
+				{ name: "javascript", personId: person.id },
+				{ name: "typescript", personId: person.id },
+				{ name: "git", personId: person.id },
+				{ name: "vue", personId: person.id },
+				{ name: "angular", personId: person.id },
+				{ name: "cpp", personId: person.id },
+			],
 		});
 	}
 
