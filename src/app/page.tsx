@@ -1,4 +1,4 @@
-import { PhoneIcon, MailIcon, LinkedinIcon, GithubIcon } from "lucide-react";
+import { PhoneIcon, MailIcon, Linkedin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { getPerson } from "@/lib/actions/person";
@@ -16,7 +16,7 @@ export default async function Page() {
         <div className="md:col-span-1 flex flex-col items-center">
           <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
             <Image
-              src={"/images/trunk.png"}
+              src={`/images/${person.profilePic}`}
               alt="Profile Picture"
               width={160}
               height={160}
@@ -26,26 +26,28 @@ export default async function Page() {
           <h1 className="text-2xl md:text-3xl font-bold mt-4">{person.name}</h1>
           {person.title && <p className="text-gray-500 mt-2">{person.title}</p>}
           <div className="mt-4 space-y-2 text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <PhoneIcon className="inline-block h-4 w-4" />
-              (316) 123-4567
-            </div>
-            <div className="flex items-center gap-2">
-              <MailIcon className="inline-block h-4 w-4" />
-              john.doe@example.com
-            </div>
-            <div className="flex items-center gap-2">
-              <LinkedinIcon className="inline-block h-4 w-4" />
-              <Link href="#">
+            {person.phone && (
+              <div className="flex items-center gap-2">
+                <PhoneIcon className="inline-block h-4 w-4" />
+                {person.phone}
+              </div>
+            )}
+            {person.email && (
+              <div className="flex items-center gap-2">
+                <MailIcon className="inline-block h-4 w-4" />
+                {person.email}
+              </div>
+            )}
+            {person.connections.map((connection) => (
+              <Link href="#" className="flex items-center gap-2">
+                <Linkedin className="inline-block h-4 w-4" />
                 linkedin.com/in/johndoe
               </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <GithubIcon className="inline-block h-4 w-4" />
-              <Link href="#">
-                github.com/johndoe
-              </Link>
-            </div>
+            ))}
+            <Link href="#" className="flex items-center gap-2">
+              <Linkedin className="inline-block h-4 w-4" />
+              linkedin.com/in/johndoe
+            </Link>
           </div>
         </div>
         <div className="md:col-span-2 space-y-8">

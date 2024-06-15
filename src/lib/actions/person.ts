@@ -1,6 +1,7 @@
 "use server";
 import { Person, Connection, Skill, Education, Experience } from "@prisma/client";
 import prisma from "../prisma";
+import fs from "node:fs/promises";
 
 type PersonWithRelations = Person & {
 	connections: Connection[];
@@ -27,7 +28,9 @@ async function getPerson(): Promise<PersonWithRelations> {
 	if (!person) {
 		person = await prisma.person.create({
 			data: {
-				name: "John Doe"
+				name: "John Doe",
+				phone: "(123) 456-7890",
+				profilePic: "trunk.png",
 			},
 			include: includeRelations
 		});
