@@ -14,25 +14,25 @@ model Person {
   email       String?
   phone       String?
   profilePic  String?
-  connections Connection[] @relation("PersonConnections")
-  skills      Skill[]      @relation("PersonSkills")
-  education   Education[]  @relation("PersonEducation")
-  experience  Experience[] @relation("PersonExperience")
+  connections Connection[] @relation("connections")
+  skills      Skill[]      @relation("skills")
+  education   Education[]  @relation("education")
+  work        Work[]       @relation("work")
 }
 
 model Connection {
-  id       String  @id @default(cuid())
+  id       String @id @default(cuid())
+  key     String
   url      String
   handle   String
-  logo     String
-  person   Person  @relation("PersonConnections", fields: [personId], references: [id], onDelete: Cascade)
+  person   Person @relation("connections", fields: [personId], references: [id], onDelete: Cascade)
   personId String
 }
 
 model Skill {
-  id       String  @id @default(cuid())
-  name     String
-  person   Person  @relation("PersonSkills", fields: [personId], references: [id], onDelete: Cascade)
+  id       String @id @default(cuid())
+  key     String
+  person   Person @relation("skills", fields: [personId], references: [id], onDelete: Cascade)
   personId String
 }
 
@@ -42,17 +42,17 @@ model Education {
   school   String
   start    DateTime
   end      DateTime?
-  person   Person    @relation("PersonEducation", fields: [personId], references: [id], onDelete: Cascade)
+  person   Person    @relation("education", fields: [personId], references: [id], onDelete: Cascade)
   personId String
 }
 
-model Experience {
+model Work {
   id          String    @id @default(cuid())
   title       String
   company     String
   description String?
   start       DateTime
   end         DateTime?
-  person      Person    @relation("PersonExperience", fields: [personId], references: [id], onDelete: Cascade)
+  person      Person    @relation("work", fields: [personId], references: [id], onDelete: Cascade)
   personId    String
 }

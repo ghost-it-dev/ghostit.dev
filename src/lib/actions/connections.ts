@@ -1,11 +1,7 @@
-import { Connection } from "@prisma/client";
+"use server"
 import prisma from "../prisma";
 import { AddConnection } from "@/lib/actions/schemas/connections";
 import { getPerson } from "./person";
-
-async function getConnections(): Promise<Connection[] | null> {
-	return prisma.connection.findMany();
-}
 
 async function removeConnection(id: string): Promise<{ message: string }> {
 	try {
@@ -28,7 +24,8 @@ async function addConnection(connection: AddConnection): Promise<{ message: stri
 		await prisma.connection.create({
 			data: {
 				url: connection.url,
-				logo: connection.logo,
+				name: connection.name,
+				handle: connection.handle,
 				person: {
 					connect: {
 						id: person.id,
@@ -43,4 +40,4 @@ async function addConnection(connection: AddConnection): Promise<{ message: stri
 	}
 }
 
-export { getConnections, removeConnection, addConnection };
+export { removeConnection, addConnection };

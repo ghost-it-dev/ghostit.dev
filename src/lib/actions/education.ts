@@ -1,11 +1,7 @@
-import { Education } from "@prisma/client";
+"use server"
 import prisma from "../prisma";
 import { AddEducation } from "./schemas/education";
 import { getPerson } from "./person";
-
-async function getEducation(): Promise<Education[] | null> {
-	return prisma.education.findMany();
-}
 
 async function removeEducation(id: string): Promise<{ message: string }> {
 	try {
@@ -45,4 +41,4 @@ async function addEducation(education: AddEducation): Promise<{ message: string 
 	}
 }
 
-export { getEducation, removeEducation, addEducation };
+export { removeEducation, addEducation };

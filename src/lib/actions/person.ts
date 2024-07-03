@@ -1,12 +1,12 @@
 "use server";
-import { Person, Connection, Skill, Education, Experience } from "@prisma/client";
+import { Person, Connection, Skill, Education, Work } from "@prisma/client";
 import prisma from "../prisma";
 
 type PersonWithRelations = Person & {
 	connections: Connection[];
 	skills: Skill[];
 	education: Education[];
-	experience: Experience[];
+	work: Work[];
 };
 
 async function getPerson(): Promise<PersonWithRelations> {
@@ -15,7 +15,7 @@ async function getPerson(): Promise<PersonWithRelations> {
 		connections: true,
 		skills: true,
 		education: true,
-		experience: true,
+		work: true,
 	};
 
 	// Attempt to find a person in the database
@@ -37,12 +37,12 @@ async function getPerson(): Promise<PersonWithRelations> {
 
 		await prisma.skill.createMany({
 			data: [
-				{ name: "javascript", personId: person.id },
-				{ name: "typescript", personId: person.id },
-				{ name: "git", personId: person.id },
-				{ name: "vue", personId: person.id },
-				{ name: "angular", personId: person.id },
-				{ name: "cpp", personId: person.id },
+				{ key: "javascript", personId: person.id },
+				{ key: "typescript", personId: person.id },
+				{ key: "git", personId: person.id },
+				{ key: "vue", personId: person.id },
+				{ key: "angular", personId: person.id },
+				{ key: "cpp", personId: person.id },
 			],
 		});
 	}

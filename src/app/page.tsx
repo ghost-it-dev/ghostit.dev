@@ -1,9 +1,9 @@
-import { PhoneIcon, MailIcon, Linkedin } from "lucide-react";
+import { PhoneIcon, MailIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { getPerson } from "@/lib/actions/person";
-import { connectionsIconMap, skillsIconMap } from "@/lib/iconMap";
-import { SiJavascript, SiReact } from "@icons-pack/react-simple-icons";
+import { connectionsIconArray } from "@/lib/connections";
+import { skillsArray } from "@/lib/skills";
 
 export default async function Page() {
   const person = await getPerson();
@@ -15,7 +15,7 @@ export default async function Page() {
         <span className="font-medium text-lg">Contact</span>
       </div> */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-        <div className="md:col-span-1 flex flex-col items-baseline">
+        <div className="md:col-span-1 flex flex-col items-center md:items-baseline">
           <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
             <Image
               src={`/images/${person.profilePic}`}
@@ -41,10 +41,11 @@ export default async function Page() {
               </div>
             )}
             {person.connections.map((connection) => {
-              const Icon = connectionsIconMap[connection.logo];
+              const connectionDetails = connectionsIconArray.find((c) => c.key === connection.key);
+              if (!connectionDetails) return null;
               return (
-                <Link key={connection.id} href={connection.url} className="flex items-center gap-2">
-                  <Icon className="inline-block h-4 w-4" />
+                <Link href={connection.url} key={connection.id} target="_blank" className="flex items-center gap-2">
+                  <connectionDetails.icon className="inline-block h-4 w-4" />
                   {connection.handle}
                 </Link>
               )
@@ -53,6 +54,24 @@ export default async function Page() {
           </div>
         </div>
         <div className="md:col-span-2 space-y-8">
+          <div>
+            <div className="min-h-[36px] flex items-center">
+              <h2 className="text-xl md:text-2xl font-bold">Skills</h2>
+            </div>
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+              {person.skills.map((skill) => {
+                const skillDetails = skillsArray.find((s) => s.value === skill.key);
+                if (!skillDetails) return null;
+                return (
+                  <div key={skill.id} className="bg-gray-100 px-4 py-2 rounded-md flex items-center gap-2">
+                    <skillDetails.icon className="w-6 h-6" />
+                    <p className="text-gray-500 select-none">{skillDetails.label}</p>
+                  </div>
+                )
+              }
+              )}
+            </div>
+          </div>
           <div>
             <div className="min-h-[36px] flex items-center">
               <h2 className="text-xl md:text-2xl font-bold">Education</h2>
@@ -66,23 +85,6 @@ export default async function Page() {
                 <h3 className="font-semibold">High School Diploma</h3>
                 <p className="text-gray-500">Example High School, 2012 - 2016</p>
               </div>
-            </div>
-          </div>
-          <div>
-            <div className="min-h-[36px] flex items-center">
-              <h2 className="text-xl md:text-2xl font-bold">Skills</h2>
-            </div>
-            <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-              {person.skills.map((skill) => {
-                const skillDetails = skillsIconMap[skill.name];
-                return (
-                  <div key={skill.id} className="bg-gray-100 px-4 py-2 rounded-md flex items-center gap-2">
-                    <skillDetails.icon className="w-6 h-6" />
-                    <p className="text-gray-500">{skillDetails.friendlyName}</p>
-                  </div>
-                )
-              }
-              )}
             </div>
           </div>
           <div>

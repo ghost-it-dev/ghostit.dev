@@ -1,14 +1,9 @@
 "use server";
 
-import { Skill } from "@prisma/client";
 import prisma from "../prisma";
-import type { AddSkill } from "./schemas/skills";
 import { getPerson } from "./person";
 import { revalidatePath } from "next/cache";
-
-async function getSkills(): Promise<Skill[] | null> {
-	return prisma.skill.findMany();
-}
+import { skillsArray } from "@/lib/skills";
 
 async function removeSkill(id: string): Promise<{ message: string }> {
 	try {
@@ -25,13 +20,16 @@ async function removeSkill(id: string): Promise<{ message: string }> {
 	}
 }
 
-async function addSkill(skill: AddSkill): Promise<{ message: string }> {
+async function addSkill(key: string): Promise<{ message: string }> {
 	const person = await getPerson();
+
+	const validSkill = skillsArray.find(skill => skill.value === key);
+	if (!validSkill) return { message: "Invalid skill" };
 
 	try {
 		await prisma.skill.create({
 			data: {
-				name: skill.name,
+				key,
 				person: {
 					connect: {
 						id: person.id,
@@ -47,4 +45,4 @@ async function addSkill(skill: AddSkill): Promise<{ message: string }> {
 	}
 }
 
-export { getSkills, removeSkill, addSkill };
+export { removeSkill, addSkill };
