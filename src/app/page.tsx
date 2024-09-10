@@ -77,7 +77,7 @@ export default async function Page() {
                 <p className="text-sm text-gray-500">Example Inc., 2019 - 2020</p>
                 <p className="text-gray-500 mt-2">
                   Participated in various projects, gaining experience in front-end and back-end development.
-                  Contributed to the company's codebase and learned best practices.
+                  Contributed to the company&apos;s codebase and learned best practices.
                 </p>
               </div>
             </div>
