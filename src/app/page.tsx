@@ -1,13 +1,8 @@
 import { PhoneIcon, MailIcon } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
-import { getPerson } from "@/lib/actions/person";
-import { connectionsIconArray } from "@/lib/connections";
-import { skillsArray } from "@/lib/skills";
+import { SiReact } from "@icons-pack/react-simple-icons";
 
 export default async function Page() {
-  const person = await getPerson();
-
   return (
     <main className="w-full max-w-4xl mx-auto py-12 md:py-16 px-4 md:px-6">
       {/* <div className="w-full gap-4 flex items-center justify-end">
@@ -18,39 +13,23 @@ export default async function Page() {
         <div className="md:col-span-1 flex flex-col items-center md:items-baseline">
           <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
             <Image
-              src={`/images/${person.profilePic}`}
+              src={`/images/trunk.png`}
               alt="Profile Picture"
               width={160}
               height={160}
               className="w-full h-full object-cover"
             />
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold mt-4">{person.name}</h1>
-          {person.title && <p className="text-gray-500 mt-2">{person.title}</p>}
+          <h1 className="text-2xl md:text-3xl font-bold mt-4">John Doe</h1>
           <div className="mt-4 space-y-2 text-sm text-gray-500">
-            {person.phone && (
-              <div className="flex items-center gap-2">
-                <PhoneIcon className="inline-block h-4 w-4" />
-                {person.phone}
-              </div>
-            )}
-            {person.email && (
-              <div className="flex items-center gap-2">
-                <MailIcon className="inline-block h-4 w-4" />
-                {person.email}
-              </div>
-            )}
-            {person.connections.map((connection) => {
-              const connectionDetails = connectionsIconArray.find((c) => c.key === connection.key);
-              if (!connectionDetails) return null;
-              return (
-                <Link href={connection.url} key={connection.id} target="_blank" className="flex items-center gap-2">
-                  <connectionDetails.icon className="inline-block h-4 w-4" />
-                  {connection.handle}
-                </Link>
-              )
-            }
-            )}
+            <div className="flex items-center gap-2">
+              <PhoneIcon className="inline-block h-4 w-4" />
+              (123) 456-7890
+            </div>
+            <div className="flex items-center gap-2">
+              <MailIcon className="inline-block h-4 w-4" />
+              email@email.com
+            </div>
           </div>
         </div>
         <div className="md:col-span-2 space-y-8">
@@ -59,17 +38,10 @@ export default async function Page() {
               <h2 className="text-xl md:text-2xl font-bold">Skills</h2>
             </div>
             <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-              {person.skills.map((skill) => {
-                const skillDetails = skillsArray.find((s) => s.value === skill.key);
-                if (!skillDetails) return null;
-                return (
-                  <div key={skill.id} className="bg-gray-100 px-4 py-2 rounded-md flex items-center gap-2">
-                    <skillDetails.icon className="w-6 h-6" />
-                    <p className="text-gray-500 select-none">{skillDetails.label}</p>
-                  </div>
-                )
-              }
-              )}
+              <div className="bg-gray-100 px-4 py-2 rounded-md flex items-center gap-2">
+                <SiReact className="w-6 h-6" />
+                <p className="text-gray-500 select-none">React</p>
+              </div>
             </div>
           </div>
           <div>
