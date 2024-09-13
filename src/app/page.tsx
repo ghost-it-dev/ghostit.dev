@@ -1,14 +1,15 @@
 import { PhoneIcon, MailIcon } from "lucide-react";
 import Image from "next/image";
 import { SiReact } from "@icons-pack/react-simple-icons";
+import Link from "next/link";
 
 export default async function Page() {
   return (
-    <main className="w-full max-w-4xl mx-auto py-12 md:py-16 px-4 md:px-6">
-      {/* <div className="w-full gap-4 flex items-center justify-end">
-        <span className="font-medium text-lg">Services</span>
-        <span className="font-medium text-lg">Contact</span>
-      </div> */}
+    <main className="w-full max-w-4xl mx-auto py-12 md:py-8 px-4 md:px-6">
+      <nav className="w-full gap-4 flex items-center mb-12">
+        <Link href="/" className="font-medium text-lg">Home</Link>
+        <Link href="/services" className="font-medium text-lg">Services</Link>
+      </nav>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         <div className="md:col-span-1 flex flex-col items-center md:items-baseline">
           <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
